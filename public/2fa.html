@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup Two-Factor Authentication</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Setup Two-Factor Authentication</h1>
+    <p class="text-gray-600 mb-4">Scan this QR code with Google Authenticator:</p>
+    <img id="qrcode" src="" alt="2FA QR Code" class="w-48 h-48 mx-auto mb-4">
+    <p class="text-gray-600">Or enter this secret manually: <span id="secret" class="font-mono"></span></p>
+    <a href="/verify-2fa" class="text-blue-600 hover:underline mt-4 inline-block">Verify 2FA</a>
+  </div>
+  <script src="/js/user.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('/api/users/2fa/setup', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        if (!response.ok) throw new Error('Failed to setup 2FA');
+        const { secret, qrCode } = await response.json();
+        document.getElementById('qrcode').src = qrCode;
+        document.getElementById('secret').textContent = secret;
+      } catch (error) {
+        console.error('Error setting up 2FA:', error);
+        alert('Failed to setup 2FA');
+      }
+    });
+  </script>
+</body>
+</html>

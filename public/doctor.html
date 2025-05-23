@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Doctor Dashboard</h1>
+    <h2 class="text-xl font-semibold text-gray-700 mb-2">Create Prescription</h2>
+    <form id="prescription-form" class="space-y-4">
+      <div>
+        <label for="patientId" class="block text-gray-600">Patient ID</label>
+        <input type="number" id="patientId" required class="w-full p-2 border rounded">
+      </div>
+      <div>
+        <label for="diagnosis" class="block text-gray-600">Diagnosis</label>
+        <input type="text" id="diagnosis" required class="w-full p-2 border rounded">
+      </div>
+      <div>
+        <label for="medication" class="block text-gray-600">Medication</label>
+        <input type="text" id="medication" required class="w-full p-2 border rounded">
+      </div>
+      <div>
+        <label for="notes" class="block text-gray-600">Notes</label>
+        <textarea id="notes" class="w-full p-2 border rounded"></textarea>
+      </div>
+      <button type="submit" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Create</button>
+    </form>
+  </div>
+
+  <h2 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Patient Records</h2>
+  <div id="patient-records" class="space-y-6">
+  </div>
+  <script src="./js/doctor.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Secure Health</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Welcome to Secure Health</h1>
+    <p class="text-gray-600 mb-4">A secure medical appointment and records system.</p>
+    <div class="space-x-4">
+      <a href="/2fa" class="text-blue-600 hover:underline">Setup 2FA</a>
+      <button id="logout" class="bg-red-600 text-white p-2 rounded hover:bg-red-700">Logout</button>
+    </div>
+  </div>
+  <script src="/js/user.js"></script>
+</body>
+</html>
